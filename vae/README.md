@@ -1,4 +1,4 @@
-# Install Dependencies
+# Dependencies
 
 `pip install -r requirements.txt`.
 
