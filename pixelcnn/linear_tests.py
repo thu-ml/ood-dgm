@@ -7,7 +7,7 @@ from sklearn.metrics import roc_curve, roc_auc_score
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--max_lags', '-L', default=400, type=int)
+parser.add_argument('--max_lags', '-L', default=1200, type=int)
 parser.add_argument('-sc', action='store_true', dest='single_channel')
 parser.add_argument('-fc', action='store_false', dest='single_channel')
 parser.add_argument('-synth', action='store_true', dest='synth_only')
@@ -60,6 +60,14 @@ def get_autocorr_(fea, B=500, L=200, test_typ='bp', skip_corr=1):
     return stats, corrs
 
 def get_wn_stats(fea, B=500, L=200, test_typ='bp', skip_corr=1):
+    """
+    :param fea: a ndarray of shape [n_samples, seq_len]. Each row corresponds to a test sequence
+                (R or W) of an input
+    :param B: sub-sample B sequences from fea. Use None to disable sub-sampling.
+    :param L: the maximum lag to include in test
+    :param skip_corr: only include lags that are multiples of skip_corr in the test statistics
+    :return: a ndarray of shape [B] or [n_samples], corresponding to the WN test statistics
+    """
     stats, corrs = get_autocorr_(fea, B, L, test_typ, skip_corr)
     return stats
 

@@ -2,6 +2,7 @@ This project is licensed under both the MIT License and the Apache License 2.0:
 
 ## MIT License
 
+Copyright (c) 2020 Ziyu Wang, Bin Dai, David Wipf, Jun Zhu
 Copyright (c) 2019 OpenAI (http://openai.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

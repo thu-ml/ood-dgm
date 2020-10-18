@@ -1,7 +1,17 @@
+This directory is a fork from the [PixelCNN++](https://github.com/openai/pixel-cnn) repository.
+
+For the linear-model-based test, just use `linear_tests.py`.
+
+For the PixelCNN-based tests, first train models following the instructions below. 
+To run the tests, generate the test sequences via
+```
+python gen_repr.py --save_dir path/to/model.cpkt -dp path/to/save.pkl -d inlier_dataset_name -od od_dset_1,od_dset_2
+```
+and use `ardgm_tests.ipynb`.
+
+## pixel-cnn++
+
 **Status:** Archive (code is provided as-is, no updates expected)
-
-
-# pixel-cnn++
 
 This is a Python3 / [Tensorflow](https://www.tensorflow.org/) implementation 
 of [PixelCNN++](https://openreview.net/pdf?id=BJrFC6ceg), as described in the following 
@@ -28,7 +38,7 @@ and [Small ImageNet](http://image-net.org/small/download.php), but is easy to ad
 for additional datasets. Training on a machine with 8 Maxwell TITAN X GPUs achieves
 3.0 bits per dimension in about 10 hours and it takes approximately 5 days to converge to 2.92.
 
-## Setup
+### Setup
 
 To run this code you need the following:
 
@@ -36,16 +46,16 @@ To run this code you need the following:
 - Python3
 - Numpy, TensorFlow and imageio packages:
 ```
-pip install numpy tensorflow-gpu imageio
+pip install -r requirements.txt
 ```
 
-## Training the model
+### Training the model
 
 Use the `train.py` script to train the model. To train the default model on 
 CIFAR-10 simply use:
 
 ```
-python3 train.py
+python train.py
 ```
 
 You might want to at least change the `--data_dir` and `--save_dir` which
@@ -60,11 +70,11 @@ the flag `--nr_gpu` accordingly.
 in the `data/` folder. You have to write an analogous data iterator object for
 your own dataset and the code should work well from there.
 
-## Pretrained model checkpoint
+### Pretrained model checkpoint
 
 You can download our pretrained (TensorFlow) model that achieves 2.92 bpd on CIFAR-10 [here](http://alpha.openai.com/pxpp.zip) (656MB).
 
-## Citation
+### Citation
 
 If you find this code useful please cite us in your work:
 
